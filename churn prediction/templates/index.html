@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Churn Prediction</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            text-align: center;
+            background-image: url('/static/background.jpg'); /* Your background image here */
+            background-size: cover;
+            background-position: center;
+        }
+
+        h1 {
+            color: #fff;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            width: 60%;
+            margin: 0 auto;
+        }
+
+        select, input {
+            margin: 10px;
+            padding: 10px;
+            font-size: 1em;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 32px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .emoji {
+            font-size: 2em;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Customer Churn Prediction</h1>
+    <div class="form-container">
+        <form method="POST">
+            <label for="tenure">Tenure (Months):</label>
+            <input type="number" id="tenure" name="tenure" required><br>
+
+            <label for="monthly_charges">Monthly Charges:</label>
+            <input type="number" step="0.01" id="monthly_charges" name="monthly_charges" required><br>
+
+            <label for="total_charges">Total Charges:</label>
+            <input type="number" step="0.01" id="total_charges" name="total_charges" required><br>
+
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select><br>
+
+            <label for="senior_citizen">Senior Citizen:</label>
+            <select id="senior_citizen" name="senior_citizen">
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select><br>
+
+            <label for="partner">Partner:</label>
+            <select id="partner" name="partner">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select><br>
+
+            <label for="dependents">Dependents:</label>
+            <select id="dependents" name="dependents">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select><br>
+
+            <label for="phone_service">Phone Service:</label>
+            <select id="phone_service" name="phone_service">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select><br>
+
+            <label for="multiple_lines">Multiple Lines:</label>
+            <select id="multiple_lines" name="multiple_lines">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select><br><br>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        <div class="result">
+            {% if result %}
+                <p>{{ result }}</p>
+            {% endif %}
+        </div>
+    </div>
+
+</body>
+</html>
